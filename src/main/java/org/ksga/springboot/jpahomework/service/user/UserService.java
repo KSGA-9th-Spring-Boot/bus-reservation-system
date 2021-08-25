@@ -1,4 +1,4 @@
-package org.ksga.springboot.jpahomework.service;
+package org.ksga.springboot.jpahomework.service.user;
 
 import org.ksga.springboot.jpahomework.dto.model.user.UserDto;
 import org.ksga.springboot.jpahomework.dto.response.JwtResponse;

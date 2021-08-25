@@ -1,7 +1,7 @@
 package org.ksga.springboot.jpahomework.security.service;
 
 import org.ksga.springboot.jpahomework.model.user.User;
-import org.ksga.springboot.jpahomework.repository.UserRepository;
+import org.ksga.springboot.jpahomework.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

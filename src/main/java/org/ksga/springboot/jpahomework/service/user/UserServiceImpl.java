@@ -1,4 +1,4 @@
-package org.ksga.springboot.jpahomework.service;
+package org.ksga.springboot.jpahomework.service.user;
 
 import lombok.RequiredArgsConstructor;
 import org.ksga.springboot.jpahomework.dto.mapper.UserMapper;
@@ -8,8 +8,8 @@ import org.ksga.springboot.jpahomework.dto.response.JwtResponse;
 import org.ksga.springboot.jpahomework.model.user.Role;
 import org.ksga.springboot.jpahomework.model.user.User;
 import org.ksga.springboot.jpahomework.model.user.UserRoles;
-import org.ksga.springboot.jpahomework.repository.RoleRepository;
-import org.ksga.springboot.jpahomework.repository.UserRepository;
+import org.ksga.springboot.jpahomework.repository.user.RoleRepository;
+import org.ksga.springboot.jpahomework.repository.user.UserRepository;
 import org.ksga.springboot.jpahomework.security.jwt.JwtUtils;
 import org.ksga.springboot.jpahomework.security.service.UserDetailsImpl;
 import org.springframework.security.authentication.AuthenticationManager;

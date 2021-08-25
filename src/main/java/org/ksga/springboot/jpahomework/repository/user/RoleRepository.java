@@ -1,4 +1,4 @@
-package org.ksga.springboot.jpahomework.repository;
+package org.ksga.springboot.jpahomework.repository.user;
 
 import org.ksga.springboot.jpahomework.model.user.Role;
 import org.ksga.springboot.jpahomework.model.user.UserRoles;

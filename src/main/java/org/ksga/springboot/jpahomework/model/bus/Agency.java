@@ -3,6 +3,7 @@ package org.ksga.springboot.jpahomework.model.bus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 import org.ksga.springboot.jpahomework.model.user.User;
 
 import javax.persistence.CascadeType;
@@ -28,8 +29,10 @@ public class Agency extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_user_id")
+    @ToString.Exclude
     private User owner;
 
     @OneToMany(mappedBy = "agency", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private Set<Bus> buses;
 }

@@ -12,6 +12,7 @@ import java.util.Collection;
 @ToString
 @Accessors(chain = true)
 public class UserDto {
+    private String id;
     private String email;
     private String password;
     private String firstName;
