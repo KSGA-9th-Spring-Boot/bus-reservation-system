@@ -1,10 +1,11 @@
-package org.ksga.springboot.jpahomework.service.bus;
+package org.ksga.springboot.jpahomework.service.bus.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.ksga.springboot.jpahomework.dto.mapper.BusMapper;
 import org.ksga.springboot.jpahomework.dto.model.bus.BusDto;
 import org.ksga.springboot.jpahomework.model.bus.Bus;
 import org.ksga.springboot.jpahomework.repository.bus.BusRepository;
+import org.ksga.springboot.jpahomework.service.bus.BusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

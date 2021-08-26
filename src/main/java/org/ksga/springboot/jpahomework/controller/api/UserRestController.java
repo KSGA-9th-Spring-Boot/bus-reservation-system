@@ -70,11 +70,13 @@ public class UserRestController {
                                     .collect(Collectors.toSet())
                     );
             UserDto user = userService.registerUser(userDto);
-            AgencyDto agencyDto = new AgencyDto();
-            agencyDto.setName(registerRequest.getFullName());
-            agencyDto.setDetails(registerRequest.getAgencyDetail());
-            agencyDto.setOwner(user);
-            agencyService.insert(agencyDto);
+            if (registerRequest.getRoles().stream().anyMatch(role -> role.equalsIgnoreCase("admin"))) {
+                AgencyDto agencyDto = new AgencyDto();
+                agencyDto.setName(registerRequest.getFullName());
+                agencyDto.setDetails(registerRequest.getAgencyDetail());
+                agencyDto.setOwner(user);
+                agencyService.insert(agencyDto);
+            }
             return Response
                     .<UserDto>ok()
                     .setPayload(user);

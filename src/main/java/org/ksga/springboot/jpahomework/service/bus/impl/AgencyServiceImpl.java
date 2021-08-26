@@ -1,4 +1,4 @@
-package org.ksga.springboot.jpahomework.service.bus;
+package org.ksga.springboot.jpahomework.service.bus.impl;
 
 import org.ksga.springboot.jpahomework.dto.mapper.AgencyMapper;
 import org.ksga.springboot.jpahomework.dto.mapper.UserMapper;
@@ -7,6 +7,7 @@ import org.ksga.springboot.jpahomework.dto.model.user.UserDto;
 import org.ksga.springboot.jpahomework.model.bus.Agency;
 import org.ksga.springboot.jpahomework.model.user.User;
 import org.ksga.springboot.jpahomework.repository.bus.AgencyRepository;
+import org.ksga.springboot.jpahomework.service.bus.AgencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
