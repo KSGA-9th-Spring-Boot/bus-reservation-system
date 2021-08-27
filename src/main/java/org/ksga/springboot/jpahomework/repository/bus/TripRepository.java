@@ -1,4 +1,4 @@
-package org.ksga.springboot.jpahomework.repository;
+package org.ksga.springboot.jpahomework.repository.bus;
 
 import org.ksga.springboot.jpahomework.model.bus.Trip;
 import org.springframework.data.jpa.repository.JpaRepository;

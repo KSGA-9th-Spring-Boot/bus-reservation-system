@@ -8,4 +8,5 @@ public interface TripService {
     TripDto addTrip(TripDto tripDto);
     List<TripDto> findAllTrips();
     List<TripDto> findAllTrips(int page, int size);
+    TripDto updateTrip(String id, TripDto tripDto);
 }

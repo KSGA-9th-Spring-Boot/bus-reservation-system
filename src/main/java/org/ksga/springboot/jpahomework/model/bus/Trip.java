@@ -1,5 +1,10 @@
 package org.ksga.springboot.jpahomework.model.bus;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+@Getter
+@Setter
+@ToString
 @Table(name = "trip")
 @Entity
 public class Trip extends BaseEntity {
@@ -17,18 +25,22 @@ public class Trip extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "source_stop_id")
+    @ToString.Exclude
     private Stop sourceStop;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dest_stop_id")
+    @ToString.Exclude
     private Stop destStop;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bus_id")
+    @ToString.Exclude
     private Bus bus;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "agency_id")
+    @ToString.Exclude
     private Agency agency;
 
 }

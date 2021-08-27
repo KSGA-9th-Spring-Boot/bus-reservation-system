@@ -7,7 +7,9 @@ import org.ksga.springboot.jpahomework.model.bus.Trip;
 import org.ksga.springboot.jpahomework.service.bus.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,6 +53,19 @@ public class TripRestController {
         return Response
                 .<List<TripDto>>ok()
                 .setPayload(tripDtos);
+    }
+
+    @PutMapping("/{id}/update")
+    public Response<TripDto> updateTrip(@PathVariable String id, @RequestBody TripRequest tripRequest) {
+        TripDto tripDto = new TripDto()
+                .setBusCode(tripRequest.getBusCode())
+                .setFare(tripRequest.getTripFare())
+                .setJourneyTime(tripRequest.getTripDuration())
+                .setSourceStopCode(tripRequest.getSourceStop())
+                .setDestinationStopCode(tripRequest.getDestinationStop());
+        return Response
+                .<TripDto>ok()
+                .setPayload(tripService.updateTrip(id, tripDto));
     }
 
 }

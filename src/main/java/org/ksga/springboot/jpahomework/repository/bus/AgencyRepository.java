@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface AgencyRepository extends JpaRepository<Agency, String> {
     Optional<Agency> findByOwner(User owner);
+    Agency findByCode(String code);
 }
