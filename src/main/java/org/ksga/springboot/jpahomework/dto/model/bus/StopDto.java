@@ -16,6 +16,7 @@ import lombok.experimental.Accessors;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StopDto implements Comparable<StopDto> {
+    private String id;
     private String code;
     private String name;
     private String detail;

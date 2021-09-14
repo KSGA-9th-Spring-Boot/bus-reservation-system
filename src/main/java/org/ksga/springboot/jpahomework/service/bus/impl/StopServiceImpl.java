@@ -32,6 +32,7 @@ public class StopServiceImpl implements StopService {
 
     @Override
     public List<StopDto> findAllStops() {
-        return null;
+        List<Stop> stops = stopRepository.findAll();
+        return stopMapper.stopsToStopDtos(stops);
     }
 }

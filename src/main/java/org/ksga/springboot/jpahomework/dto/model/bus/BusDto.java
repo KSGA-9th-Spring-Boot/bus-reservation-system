@@ -10,6 +10,7 @@ import lombok.experimental.Accessors;
 @ToString
 @Accessors(chain = true)
 public class BusDto {
+    private String id;
     private String code;
     private int capacity;
     private String make;

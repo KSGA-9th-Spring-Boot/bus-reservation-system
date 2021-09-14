@@ -5,10 +5,13 @@ import org.ksga.springboot.jpahomework.dto.request.StopRequest;
 import org.ksga.springboot.jpahomework.dto.response.Response;
 import org.ksga.springboot.jpahomework.service.bus.StopService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/stops")
@@ -26,5 +29,16 @@ public class StopRestController {
         return Response
                 .<StopDto>ok()
                 .setPayload(stopDto);
+    }
+
+    @GetMapping
+    public Response<List<StopDto>> findAllStops() {
+        List<StopDto> stopDtos = stopService.findAllStops();
+        if (stopDtos.isEmpty()) {
+            return Response.notFound();
+        }
+        return Response
+                .<List<StopDto>>ok()
+                .setPayload(stopDtos);
     }
 }

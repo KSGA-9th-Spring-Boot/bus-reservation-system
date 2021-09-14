@@ -12,11 +12,15 @@ import org.ksga.springboot.jpahomework.repository.bus.TripRepository;
 import org.ksga.springboot.jpahomework.repository.bus.BusRepository;
 import org.ksga.springboot.jpahomework.service.bus.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TripServiceImpl implements TripService {
@@ -37,20 +41,34 @@ public class TripServiceImpl implements TripService {
 
     @Override
     public TripDto addTrip(TripDto tripDto) {
+        Bus bus = busRepository.findById(tripDto.getBusCode()).orElse(null);
+        Stop sourceStop = stopRepository.findByCode(tripDto.getSourceStopCode());
+        Stop destStop = stopRepository.findByCode(tripDto.getDestinationStopCode());
+
         Trip trip = tripMapper.tripDtoToTrip(tripDto);
+        trip.setBus(bus);
+        trip.setSourceStop(sourceStop);
+        trip.setDestStop(destStop);
+
+        System.out.println(trip);
+
         tripRepository.save(trip);
         return tripMapper.tripToTripDto(trip);
     }
 
     @Override
     public List<TripDto> findAllTrips() {
-        List<TripDto> tripDtos = tripMapper.tripsToTripDtos(tripRepository.findAll());
+        List<Trip> trips = tripRepository.findAll();
+        System.out.println(trips);
+        List<TripDto> tripDtos = tripMapper.tripsToTripDtos(trips);
         return tripDtos.isEmpty() ? null : tripDtos;
     }
 
     @Override
     public List<TripDto> findAllTrips(int page, int size) {
-        return null;
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Trip> trips = tripRepository.findAll(pageable);
+        return tripMapper.tripsToTripDtos(trips.getContent());
     }
 
     @Transactional
@@ -74,5 +92,28 @@ public class TripServiceImpl implements TripService {
             return null;
         }
         return null;
+    }
+
+    @Override
+    public TripDto findById(String id) {
+        Trip trip = tripRepository.getById(id);
+        return tripMapper.tripToTripDto(trip);
+    }
+
+    @Override
+    public long count() {
+        return tripRepository.count();
+    }
+
+    @Override
+    public TripDto deleteById(String id) {
+        Optional<Trip> trip = tripRepository.findById(id);
+        try {
+            tripRepository.deleteById(id);
+        } catch (EntityNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return trip.map(value -> tripMapper.tripToTripDto(value)).orElse(null);
     }
 }

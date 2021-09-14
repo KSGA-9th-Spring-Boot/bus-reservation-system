@@ -9,4 +9,8 @@ public interface TripService {
     List<TripDto> findAllTrips();
     List<TripDto> findAllTrips(int page, int size);
     TripDto updateTrip(String id, TripDto tripDto);
+    TripDto findById(String id);
+    long count();
+
+    TripDto deleteById(String id);
 }

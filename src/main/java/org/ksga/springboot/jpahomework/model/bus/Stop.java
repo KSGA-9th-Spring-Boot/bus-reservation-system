@@ -20,6 +20,7 @@ import javax.persistence.Table;
         ))
 @Entity
 public class Stop extends BaseEntity {
+    private String id;
     private String code;
     private String name;
     private String detail;

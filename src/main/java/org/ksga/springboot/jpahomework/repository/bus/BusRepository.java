@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface BusRepository extends JpaRepository<Bus, String> {
     Bus findByCodeAndAgency(String busCode, Agency agency);
     Bus findByCode(String code);
+    boolean existsByCode(String code);
 }

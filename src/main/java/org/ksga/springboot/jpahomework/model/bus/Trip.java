@@ -25,22 +25,18 @@ public class Trip extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "source_stop_id")
-    @ToString.Exclude
     private Stop sourceStop;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dest_stop_id")
-    @ToString.Exclude
     private Stop destStop;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bus_id")
-    @ToString.Exclude
     private Bus bus;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "agency_id")
-    @ToString.Exclude
     private Agency agency;
 
 }

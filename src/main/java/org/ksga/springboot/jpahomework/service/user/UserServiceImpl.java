@@ -49,6 +49,7 @@ public class UserServiceImpl implements UserService {
         return new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), roles);
     }
 
+    @Transactional
     @Override
     public UserDto registerUser(UserDto userDto) {
         Set<String> strRoles = userDto.getRoles().stream().map(RoleDto::getRole).collect(Collectors.toSet());
